@@ -17,36 +17,33 @@ import * as firebaseui from "firebaseui";
 
 // Add Firebase project configuration object here
 var firebaseConfig = {
-  apiKey: "AIzaSyAzcwgZuLA7dO9g4sQhXQVTUgCo0M8m2qM",
-  authDomain: "grocerylist-91956.firebaseapp.com",
-  databaseURL: "https://grocerylist-91956.firebaseio.com",
-  projectId: "grocerylist-91956",
-  storageBucket: "grocerylist-91956.appspot.com",
-  messagingSenderId: "813812426276",
-  appId: "1:813812426276:web:93e5897af12892ff78dab1",
-  measurementId: "G-VZ83BTR72T"
+  apiKey: 'AIzaSyDmco00TLPSwg2W92DgkGrDez3xDj7ujxs',
+  authDomain: 'testproject-grocerylist.firebaseapp.com',
+  projectId: 'testproject-grocerylist',
+  storageBucket: 'testproject-grocerylist.appspot.com',
+  messagingSenderId: '118044542649',
+  appId: '1:118044542649:web:80f68a6dd3bc44ffd6fd68',
+  measurementId: 'G-2CV1D4J604',
 };
 
 firebase.initializeApp(firebaseConfig);
 
 // Save the list to database
-$("#save").click(function() {
-// document.querySelectorAll('li') ==> nodelist
-// for loop to go through each nodelist
-// and then get the text content
-
-  $('li').each(function(){
+$('#save').click(function () {
+  // document.querySelectorAll('li') ==> nodelist
+  // for loop to go through each nodelist
+  // and then get the text content
+  $(this).text('saved');
+  $('li').each(function () {
     var value = $(this).text();
     console.log(value);
 
-    firebase
-    .firestore()
-    .collection("mylist")
-    .add({
-      item: value//?
+    firebase.firestore().collection('mylist').add({
+      item: value,
     });
 
-
+    firebase.firestore().collection('otherlist').add({
+      item: 'bananas',
+    });
   });
-
 });
